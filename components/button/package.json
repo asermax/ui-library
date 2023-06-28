@@ -1,0 +1,27 @@
+{
+  "name": "@asermax/button",
+  "description": "Button",
+  "version": "1.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/asermax/ui-library.git",
+    "directory": "components/button"
+  },
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepublishOnly": "lerna run build --scope=@asermax/button --include-dependencies",
+    "lint:eslint": "eslint .",
+    "lint:types": "tsc",
+    "lint-file:eslint": "eslint",
+    "lint-file:types": "tsc-files",
+    "lint-staged": "lint-staged"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.11",
+    "@emotion/styled": "^11.11",
+    "react": "^18.2"
+  }
+}

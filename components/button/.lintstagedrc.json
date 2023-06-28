@@ -1,0 +1,3 @@
+{
+  "*.{ts,tsx}": ["yarn lint-file:eslint --fix", "yarn lint-file:types"]
+}

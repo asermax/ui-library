@@ -1,0 +1,54 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish-npm-packages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16.x"
+      - name: Install Dependencies
+        run: yarn --frozen-lockfile
+      - name: Setup git identity
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      - name: Setup .npmrc
+        run: echo '//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}' >> .npmrc
+      - name: Ignore .npmrc changes in git
+        run: git update-index --assume-unchanged .npmrc
+      - name: Publish packages
+        run: yarn publish:all
+        env:
+          HUSKY: 0
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  update-storybook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+      - name: Install Dependencies
+        run: yarn --frozen-lockfile
+      - name: Build storybook
+        run: yarn build-storybook
+      - name: Publish storybook
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: storybook
+          folder: storybook-static
+          clean-exclude: |
+            feature

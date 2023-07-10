@@ -7,6 +7,7 @@ module.exports = {
       typescript: true,
     },
   },
+  "ignorePatterns": ["**/dist/"],
   rules: {
     "import/prefer-default-export": "off",
     "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],

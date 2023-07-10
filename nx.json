@@ -23,6 +23,12 @@
         "^build",
         "^lint:types"
       ]
+    },
+    "lint:eslint": {
+      "dependsOn": [
+        "^build",
+        "^lint:eslint"
+      ]
     }
   }
 }

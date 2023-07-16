@@ -26,6 +26,11 @@ const BaseButton = styled.button`
   position: relative;
   transition: all 700ms ease;
 
+  .content {
+    position: relative;
+    z-index: 1;
+  }
+
   .blobs {
     height: 100%;
     filter: url(#goo);
@@ -35,7 +40,6 @@ const BaseButton = styled.button`
     left: 0;
     bottom: -3px;
     right: -1px;
-    z-index: -1;
 
     div {
       background-color: ${({ color }) => color};
@@ -79,7 +83,7 @@ type Props = BaseProps & ComponentProps<typeof BaseButton>;
 
 export const Button = ({ children, ...props }: Props) => (
   <BaseButton {...props}>
-    {children}
+    <span className="content">{children}</span>
     <div className="blobs">
       <div />
       <div />

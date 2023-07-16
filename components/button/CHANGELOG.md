@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/asermax/ui-library/compare/@asermax/button@1.2.0...@asermax/button@1.2.1) (2023-07-16)
+
+### Bug Fixes
+
+- **button:** fix styles to keep text in front ([e1fd4f4](https://github.com/asermax/ui-library/commit/e1fd4f41f60aaa8d5fbe22933c3726a058a60b04))
+
 # 1.2.0 (2023-06-28)
 
 ### Features

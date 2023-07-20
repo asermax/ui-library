@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "noEmit": true,
+    "paths": {
+      "@asermax/button": [
+        "../../button/dist"
+      ],
+    }
+  },
+  "include": [
+    "src/**/*",
+    "stories/**/*",
+    ".eslintrc.js"
+  ],
+}

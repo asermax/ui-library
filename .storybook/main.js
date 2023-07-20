@@ -8,5 +8,12 @@ module.exports = {
   },
   docs: {
     autodocs: true
-  }
+  },
+  webpackFinal: async config => {
+    config.resolve.alias = {
+      ...config.alias,
+      "@asermax/button": path.resolve(__dirname, "../components/button/src"),
+    };
+    return config;
+  },
 };
